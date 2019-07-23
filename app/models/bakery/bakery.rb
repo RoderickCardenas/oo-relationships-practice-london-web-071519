@@ -17,7 +17,7 @@ class Bakery
     def ingredients
 		ingredients = []
 		our_desserts.each {|dessert| ingredients << dessert.ingredients}
-		ingredients
+		ingredients.flatten!
     end
 
     def our_desserts
@@ -26,12 +26,10 @@ class Bakery
 
 
     def average_calories
-    flatten = ingredients.flatten!  
-        flatten.sum {|ingred| ingred.calories}
+    ingredients.sum {|ingred| ingred.calories}
     end
 
     def shopping_list
-    flatten = ingredients.flatten!
-        flatten.map {|ingred| ingred.name}
+    ingredients.map {|ingred| ingred.name}
     end
 end
